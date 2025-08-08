@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mPOS MVP - Wireframes & User Flows</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            padding: 20px;
+            border-radius: 12px;
+            background: #f8fafc;
+            border-left: 5px solid #667eea;
+        }
+        
+        h2 {
+            color: #2d3748;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .wireframe {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .wireframe:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .screen-title {
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .phone-frame {
+            width: 250px;
+            height: 450px;
+            border: 3px solid #2d3748;
+            border-radius: 25px;
+            margin: 0 auto 15px;
+            background: #f7fafc;
+            padding: 15px;
+            position: relative;
+        }
+        
+        .status-bar {
+            height: 20px;
+            background: #2d3748;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 10px;
+            color: white;
+        }
+        
+        .header {
+            height: 50px;
+            background: #667eea;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .content-area {
+            height: 320px;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            border: 2px dashed #cbd5e0;
+            overflow: hidden;
+        }
+        
+        .button {
+            background: #48bb78;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            margin: 5px 2px;
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .button.secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .button.primary {
+            background: #667eea;
+        }
+        
+        .input {
+            width: 90%;
+            height: 30px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            margin: 5px 0;
+            padding: 0 8px;
+            font-size: 12px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        
+        .product-card {
+            background: #edf2f7;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 10px;
+            border: 1px solid #cbd5e0;
+        }
+        
+        .cart-item {
+            background: #f0fff4;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 5px 0;
+            font-size: 11px;
+            border-left: 3px solid #48bb78;
+        }
+        
+        .total {
+            background: #667eea;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .flow-diagram {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .flow-step {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            margin: 10px;
+            display: inline-block;
+            font-size: 14px;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .flow-arrow {
+            font-size: 20px;
+            color: #667eea;
+            margin: 0 10px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            background: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border-left: 4px solid #48bb78;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .offline-indicator {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+        
+        .online-indicator {
+            background: #c6f6d5;
+            color: #22543d;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+        
+        .language-toggle {
+            background: #e2e8f0;
+            padding: 4px;
+            border-radius: 15px;
+            font-size: 10px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>mPOS MVP - Wireframes & User Flows</h1>
+        
+        <div class="section">
+            <h2>🎯 Core User Flow: Complete a Sale</h2>
+            <div class="flow-diagram">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <span class="flow-step">App Launch</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Search Product</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Add to Cart</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Payment</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Receipt</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">WhatsApp Share</span>
+                </div>
+                <p><strong>Target Time:</strong> <90 seconds for experienced user | <strong>Success Metric:</strong> 90% completion rate</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📱 Screen Wireframes</h2>
+            
+            <div class="wireframe-grid">
+                <!-- Sales Screen -->
+                <div class="wireframe">
+                    <div class="screen-title">1. Sales Screen (Main)</div>
+                    <div class="phone-frame">
+                        <div class="language-toggle">EN</div>
+                        <div class="online-indicator">Online</div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="header">mPOS - Sales</div>
+                        <div class="content-area">
+                            <input class="input" placeholder="🔍 Search products...">
+                            <button class="button secondary" style="width: 45%; margin: 5px 1%;">📷 Scan</button>
+                            <button class="button secondary" style="width: 45%; margin: 5px 1%;">+ New Product</button>
+                            
+                            <div class="product-grid">
+                                <div class="product-card">🥤 Coke<br>R15.00</div>
+                                <div class="product-card">🍞 Bread<br>R12.50</div>
+                                <div class="product-card">☕ Coffee<br>R8.00</div>
+                                <div class="product-card">🍪 Biscuits<br>R6.50</div>
+                            </div>
+                            
+                            <div style="background: #f0fff4; padding: 10px; border-radius: 6px; margin-top: 10px;">
+                                <div style="font-size: 11px; font-weight: bold;">Current Sale:</div>
+                                <div class="cart-item">Coke x2 = R30.00</div>
+                            </div>
+                            
+                            <div class="total">TOTAL: R30.00</div>
+                            <button class="button primary" style="width: 100%;">Complete Sale</button>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>🔍 Fuzzy search with instant results</li>
+                        <li>📱 Quick-add buttons for popular items</li>
+                        <li>🛒 Real-time cart with running total</li>
+                        <li>📶 Clear online/offline status</li>
+                        <li>🌍 Language toggle (EN/AF/ZU)</li>
+                    </ul>
+                </div>
+
+                <!-- Payment Screen -->
+                <div class="wireframe">
+                    <div class="screen-title">2. Payment Screen</div>
+                    <div class="phone-frame">
+                        <div class="online-indicator">Online</div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="header">Complete Payment</div>
+                        <div class="content-area">
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <h3 style="margin: 0; font-size: 24px; color: #667eea;">R30.00</h3>
+                                <p style="margin: 5px 0; font-size: 12px; color: #666;">Total Amount</p>
+                            </div>
+                            
+                            <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                                <div style="font-size: 12px; margin-bottom: 10px;"><strong>Items:</strong></div>
+                                <div style="font-size: 11px;">• Coke x2 = R30.00</div>
+                            </div>
+                            
+                            <div style="margin: 20px 0;">
+                                <div style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">Payment Method:</div>
+                                <button class="button primary" style="width: 48%; margin: 1%;">💵 Cash</button>
+                                <button class="button secondary" style="width: 48%; margin: 1%;">💳 Card</button>
+                            </div>
+                            
+                            <div style="background: #fff5f5; padding: 10px; border-radius: 6px; margin: 10px 0; font-size: 12px;">
+                                <strong>Cash Received:</strong>
+                                <input class="input" placeholder="Enter amount..." style="margin-top: 5px;">
+                                <div style="margin-top: 5px; color: #22543d;"><strong>Change: R20.00</strong></div>
+                            </div>
+                            
+                            <button class="button primary" style="width: 100%; margin-top: 15px;">Process Payment</button>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>💰 Automatic change calculation</li>
+                        <li>💳 Future card reader integration ready</li>
+                        <li>📊 Payment method tracking</li>
+                        <li>⚡ <3 second completion time</li>
+                    </ul>
+                </div>
+
+                <!-- Receipt Screen -->
+                <div class="wireframe">
+                    <div class="screen-title">3. Receipt Screen</div>
+                    <div class="phone-frame">
+                        <div class="online-indicator">Online</div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="header">Sale Complete! 🎉</div>
+                        <div class="content-area">
+                            <div style="background: white; border: 1px solid #ccc; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 11px;">
+                                <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">🧾 RECEIPT</div>
+                                <div style="text-align: center; margin-bottom: 10px;">
+                                    <strong>Nomsa's Spaza Shop</strong><br>
+                                    123 Vilakazi Street, Soweto<br>
+                                    Tel: 011-123-4567
+                                </div>
+                                <hr style="margin: 10px 0;">
+                                <div>Date: 06/08/2025 14:22</div>
+                                <div>Sale #: 001</div>
+                                <hr style="margin: 10px 0;">
+                                <div>Coke x2 .......... R30.00</div>
+                                <hr style="margin: 10px 0;">
+                                <div style="font-weight: bold;">TOTAL: R30.00</div>
+                                <div>Payment: Cash</div>
+                                <div>Change: R20.00</div>
+                                <hr style="margin: 10px 0;">
+                                <div style="text-align: center; font-size: 10px;">
+                                    Thank you! Ngiyabonga! Dankie!<br>
+                                    Come back soon! 😊
+                                </div>
+                            </div>
+                            
+                            <button class="button" style="background: #25D366; width: 48%; margin: 1%;">💬 WhatsApp</button>
+                            <button class="button secondary" style="width: 48%; margin: 1%;">🖨️ Print</button>
+                            
+                            <button class="button primary" style="width: 100%; margin-top: 10px;">New Sale</button>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>🧾 Professional multi-language receipts</li>
+                        <li>💬 One-tap WhatsApp sharing</li>
+                        <li>🖨️ Bluetooth printer support</li>
+                        <li>📄 PDF export capability</li>
+                        <li>🔄 Quick new sale initiation</li>
+                    </ul>
+                </div>
+
+                <!-- Products Management -->
+                <div class="wireframe">
+                    <div class="screen-title">4. Products Screen</div>
+                    <div class="phone-frame">
+                        <div class="online-indicator">Sync</div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="header">Products</div>
+                        <div class="content-area">
+                            <div style="display: flex; margin-bottom: 10px;">
+                                <input class="input" placeholder="Search products..." style="flex: 1;">
+                                <button class="button primary" style="margin-left: 5px;">+ Add</button>
+                            </div>
+                            
+                            <div style="background: #e6fffa; padding: 8px; border-radius: 4px; margin-bottom: 10px; font-size: 11px;">
+                                ⚡ Syncing 3 items with server...
+                            </div>
+                            
+                            <div class="product-card" style="margin: 8px 0; text-align: left; background: #f7fafc;">
+                                <div style="font-weight: bold;">🥤 Coca Cola 500ml</div>
+                                <div style="font-size: 10px; color: #666;">Price: R15.00 | Barcode: 1234567</div>
+                                <div style="font-size: 9px; color: #48bb78;">✅ Synced</div>
+                            </div>
+                            
+                            <div class="product-card" style="margin: 8px 0; text-align: left; background: #f7fafc;">
+                                <div style="font-weight: bold;">🍞 Albany Bread</div>
+                                <div style="font-size: 10px; color: #666;">Price: R12.50 | No barcode</div>
+                                <div style="font-size: 9px; color: #ed8936;">⏳ Pending sync</div>
+                            </div>
+                            
+                            <div class="product-card" style="margin: 8px 0; text-align: left; background: #f7fafc;">
+                                <div style="font-weight: bold;">☕ Ricoffy Coffee</div>
+                                <div style="font-size: 10px; color: #666;">Price: R8.00 | Barcode: 7890123</div>
+                                <div style="font-size: 9px; color: #48bb78;">✅ Synced</div>
+                            </div>
+                            
+                            <button class="button secondary" style="width: 100%; margin-top: 15px;">📱 Import from Barcode</button>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>📦 Easy product management</li>
+                        <li>🔄 Visual sync status indicators</li>
+                        <li>📷 Barcode scanning for new products</li>
+                        <li>✏️ Quick edit product details</li>
+                        <li>📈 Usage-based sorting</li>
+                    </ul>
+                </div>
+
+                <!-- Settings Screen -->
+                <div class="wireframe">
+                    <div class="screen-title">5. Settings Screen</div>
+                    <div class="phone-frame">
+                        <div class="online-indicator">Online</div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="header">Settings</div>
+                        <div class="content-area">
+                            <div style="margin: 15px 0;">
+                                <div style="font-weight: bold; margin-bottom: 10px;">🏪 Business Details</div>
+                                <input class="input" placeholder="Business Name" value="Nomsa's Spaza Shop">
+                                <input class="input" placeholder="Phone Number" value="011-123-4567">
+                                <input class="input" placeholder="Address" value="123 Vilakazi Street">
+                            </div>
+                            
+                            <div style="margin: 15px 0;">
+                                <div style="font-weight: bold; margin-bottom: 10px;">🌍 Language / Ulimi / Taal</div>
+                                <select class="input">
+                                    <option>English</option>
+                                    <option>isiZulu</option>
+                                    <option>Afrikaans</option>
+                                </select>
+                            </div>
+                            
+                            <div style="margin: 15px 0;">
+                                <div style="font-weight: bold; margin-bottom: 10px;">🔒 Security</div>
+                                <button class="button secondary" style="width: 100%; margin: 3px 0;">Change PIN</button>
+                                <button class="button secondary" style="width: 100%; margin: 3px 0;">Auto-lock: 5 minutes</button>
+                            </div>
+                            
+                            <div style="margin: 15px 0;">
+                                <div style="font-weight: bold; margin-bottom: 10px;">🖨️ Printing</div>
+                                <button class="button secondary" style="width: 100%; margin: 3px 0;">Connect Bluetooth Printer</button>
+                                <div style="font-size: 10px; color: #666;">No printer connected</div>
+                            </div>
+                            
+                            <button class="button" style="background: #e53e3e; width: 100%; margin-top: 15px;">🚪 Logout</button>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>🏪 Customizable business information</li>
+                        <li>🌍 Multi-language support</li>
+                        <li>🔒 PIN-based security</li>
+                        <li>🖨️ Printer setup wizard</li>
+                        <li>⚙️ App preferences</li>
+                    </ul>
+                </div>
+
+                <!-- Offline Mode -->
+                <div class="wireframe">
+                    <div class="screen-title">6. Offline Mode</div>
+                    <div class="phone-frame">
+                        <div class="offline-indicator">Offline</div>
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="header">mPOS - Sales (Offline)</div>
+                        <div class="content-area">
+                            <div style="background: #fed7d7; padding: 10px; border-radius: 6px; margin-bottom: 10px; font-size: 11px; text-align: center;">
+                                📡 No internet connection<br>
+                                Working offline - will sync when online
+                            </div>
+                            
+                            <input class="input" placeholder="🔍 Search products...">
+                            <div class="product-grid">
+                                <div class="product-card">🥤 Coke<br>R15.00</div>
+                                <div class="product-card">🍞 Bread<br>R12.50</div>
+                                <div class="product-card">☕ Coffee<br>R8.00</div>
+                                <div class="product-card">🍪 Biscuits<br>R6.50</div>
+                            </div>
+                            
+                            <div style="background: #f0fff4; padding: 10px; border-radius: 6px; margin-top: 10px;">
+                                <div style="font-size: 11px; font-weight: bold;">Current Sale:</div>
+                                <div class="cart-item">Bread x1 = R12.50</div>
+                            </div>
+                            
+                            <div class="total">TOTAL: R12.50</div>
+                            
+                            <div style="background: #fff5f5; padding: 8px; border-radius: 4px; margin: 8px 0; font-size: 10px;">
+                                ⏳ 2 sales waiting to sync
+                            </div>
+                            
+                            <button class="button primary" style="width: 100%;">Complete Sale (Offline)</button>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>🔄 Full functionality without internet</li>
+                        <li>📱 Clear offline status indication</li>
+                        <li>💾 Local data persistence</li>
+                        <li>⏳ Sync queue visibility</li>
+                        <li>🔄 Auto-sync when connection restored</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔄 Critical User Flows</h2>
+            
+            <h3>Flow 1: First Time Setup</h3>
+            <div class="flow-diagram">
+                <div style="text-align: center;">
+                    <span class="flow-step">Download PWA</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Set PIN</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Business Details</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Add First Products</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Complete Tutorial Sale</span>
+                </div>
+            </div>
+            
+            <h3>Flow 2: Network Interruption Recovery</h3>
+            <div class="flow-diagram">
+                <div style="text-align: center;">
+                    <span class="flow-step">Working Online</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Network Drops</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Offline Mode Alert</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Continue Sales Offline</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Auto-sync When Online</span>
+                </div>
+            </div>
+            
+            <h3>Flow 3: WhatsApp Receipt Sharing</h3>
+            <div class="flow-diagram">
+                <div style="text-align: center;">
+                    <span class="flow-step">Complete Sale</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Generate Receipt</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Tap WhatsApp</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Select Contact</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Send Receipt</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Page Component Specifications</h2>
+            
+            <h3>Sales Screen Components</h3>
+            <ul class="feature-list">
+                <li><strong>Header:</strong> App name, sync status, language toggle</li>
+                <li><strong>Search Bar:</strong> Fuzzy search with instant results, barcode scan button</li>
+                <li><strong>Quick Actions:</strong> Scan barcode, add new product, view cart</li>
+                <li><strong>Product Grid:</strong> Responsive grid with product cards (name, price, image)</li>
+                <li><strong>Shopping Cart:</strong> Collapsible cart with items, quantities, running total</li>
+                <li><strong>Action Buttons:</strong> Complete sale, clear cart, save for later</li>
+                <li><strong>Status Indicators:</strong> Online/offline, sync status, pending operations count</li>
+            </ul>
+            
+            <h3>Payment Screen Components</h3>
+            <ul class="feature-list">
+                <li><strong>Order Summary:</strong> Items, quantities, subtotal, taxes</li>
+                <li><strong>Total Display:</strong> Large, prominent total amount</li>
+                <li><strong>Payment Methods:</strong> Cash (default), card, mobile payment buttons</li>
+                <li><strong>Cash Calculator:</strong> Amount received input, change calculation</li>
+                <li><strong>Action Buttons:</strong> Process payment, back to cart, cancel</li>
+            </ul>
+            
+            <h3>Receipt Screen Components</h3>
+            <ul class="feature-list">
+                <li><strong>Receipt Preview:</strong> Formatted receipt with business details</li>
+                <li><strong>Share Options:</strong> WhatsApp, SMS, email, print buttons</li>
+                <li><strong>Save Options:</strong> Save to device, export PDF, email receipt</li>
+                <li><strong>Customer Info:</strong> Optional customer name/phone for receipt sharing</li>
+                <li><strong>Action Buttons:</strong> New sale, reprint receipt, view transaction history</li>
+            </ul>
+            
+            <h3>Products Management Components</h3>
+            <ul class="feature-list">
+                <li><strong>Product List:</strong> Searchable list with product cards</li>
+                <li><strong>Add Product Form:</strong> Name, price, barcode, category inputs</li>
+                <li><strong>Barcode Scanner:</strong> Camera integration for barcode capture</li>
+                <li><strong>Bulk Import:</strong> CSV import, barcode batch scan</li>
+                <li><strong>Sync Status:</strong> Per-product sync indicators, bulk sync actions</li>
+                <li><strong>Product Actions:</strong> Edit, delete, duplicate, set as favorite</li>
+            </ul>
+            
+            <h3>Settings Screen Components</h3>
+            <ul class="feature-list">
+                <li><strong>Business Profile:</strong> Name, address, phone, logo upload</li>
+                <li><strong>Receipt Settings:</strong> Header/footer text, tax settings, currency</li>
+                <li><strong>Security Settings:</strong> PIN change, auto-lock timeout, backup settings</li>
+                <li><strong>Language Settings:</strong> UI language, receipt language, date format</li>
+                <li><strong>Printer Setup:</strong> Bluetooth printer pairing, print test, paper size</li>
+                <li><strong>Data Management:</strong> Export data, clear cache, reset app</li>
+            </ul>
+            
+            <h3>Dashboard/Reports Components</h3>
+            <ul class="feature-list">
+                <li><strong>Daily Summary:</strong> Today's sales, transaction count, top products</li>
+                <li><strong>Quick Stats:</strong> Revenue cards, payment method breakdown</li>
+                <li><strong>Recent Transactions:</strong> Last 10 sales with details</li>
+                <li><strong>Charts:</strong> Sales trends, product performance, hourly patterns</li>
+                <li><strong>Export Options:</strong> CSV export, date range selection, email reports</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🎨 Design System Specifications</h2>
+            
+            <h3>Color Palette</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                <div style="background: #667eea; color: white; padding: 20px; border-radius: 8px; text-align: center;">
+                    <strong>Primary Blue</strong><br>#667eea<br>Headers, CTAs, Active states
+                </div>
+                <div style="background: #48bb78; color: white; padding: 20px; border-radius: 8px; text-align: center;">
+                    <strong>Success Green</strong><br>#48bb78<br>Confirmations, Success states
+                </div>
+                <div style="background: #ed8936; color: white; padding: 20px; border-radius: 8px; text-align: center;">
+                    <strong>Warning Orange</strong><br>#ed8936<br>Alerts, Pending states
+                </div>
+                <div style="background: #e53e3e; color: white; padding: 20px; border-radius: 8px; text-align: center;">
+                    <strong>Error Red</strong><br>#e53e3e<br>Errors, Delete actions
+                </div>
+                <div style="background: #2d3748; color: white; padding: 20px; border-radius: 8px; text-align: center;">
+                    <strong>Dark Gray</strong><br>#2d3748<br>Text, Icons, Borders
+                </div>
+                <div style="background: #f7fafc; color: #2d3748; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #e2e8f0;">
+                    <strong>Light Gray</strong><br>#f7fafc<br>Backgrounds, Cards
+                </div>
+            </div>
+            
+            <h3>Typography</h3>
+            <ul class="feature-list">
+                <li><strong>Headers:</strong> Inter, Bold, 24px-32px (high contrast for outdoor visibility)</li>
+                <li><strong>Body Text:</strong> Inter, Regular, 16px-18px (accessibility compliant)</li>
+                <li><strong>Small Text:</strong> Inter, Regular, 14px (minimum for readability)</li>
+                <li><strong>Numbers:</strong> Inter, Semibold, monospace formatting for prices</li>
+                <li><strong>Buttons:</strong> Inter, Medium, 16px with adequate padding</li>
+            </ul>
+            
+            <h3>Touch Targets & Spacing</h3>
+            <ul class="feature-list">
+                <li><strong>Minimum Touch Target:</strong> 44px x 44px (accessibility standard)</li>
+                <li><strong>Button Spacing:</strong> 8px minimum between interactive elements</li>
+                <li><strong>Content Padding:</strong> 16px screen edges, 12px component padding</li>
+                <li><strong>Card Spacing:</strong> 16px between cards, 8px internal padding</li>
+                <li><strong>Grid Gaps:</strong> 12px between product cards, 16px between sections</li>
+            </ul>
+            
+            <h3>Accessibility Features</h3>
+            <ul class="feature-list">
+                <li><strong>Color Contrast:</strong> WCAG AA compliance (4.5:1 ratio minimum)</li>
+                <li><strong>Font Scaling:</strong> Respect system font size settings</li>
+                <li><strong>Screen Reader:</strong> Semantic HTML, ARIA labels, role attributes</li>
+                <li><strong>Keyboard Navigation:</strong> Tab order, focus indicators, skip links</li>
+                <li><strong>Motor Impairments:</strong> Large touch targets, gesture alternatives</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📱 Responsive Design Breakpoints</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0;">
+                    <h4 style="margin: 0 0 10px 0; color: #2d3748;">📱 Mobile Portrait</h4>
+                    <p style="margin: 0; font-size: 14px; color: #666;">320px - 480px<br>Primary target<br>Single column layout</p>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0;">
+                    <h4 style="margin: 0 0 10px 0; color: #2d3748;">📱 Mobile Landscape</h4>
+                    <p style="margin: 0; font-size: 14px; color: #666;">481px - 768px<br>Tablet compatibility<br>Two column layout</p>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0;">
+                    <h4 style="margin: 0 0 10px 0; color: #2d3748;">🖥️ Desktop</h4>
+                    <p style="margin: 0; font-size: 14px; color: #666;">769px+<br>Future enhancement<br>Multi-column layout</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚡ Performance & Technical Considerations</h2>
+            
+            <h3>Loading States & Skeletons</h3>
+            <ul class="feature-list">
+                <li><strong>Product Grid:</strong> Skeleton cards while loading products from IndexedDB</li>
+                <li><strong>Search Results:</strong> Progressive loading with debounced search queries</li>
+                <li><strong>Sync Status:</strong> Real-time indicators for sync progress and conflicts</li>
+                <li><strong>Receipt Generation:</strong> Loading spinner during PDF/image generation</li>
+                <li><strong>Camera Scanner:</strong> Viewfinder overlay with scan guidelines</li>
+            </ul>
+            
+            <h3>Error States & Recovery</h3>
+            <ul class="feature-list">
+                <li><strong>Network Errors:</strong> Clear offline mode with retry mechanisms</li>
+                <li><strong>Sync Conflicts:</strong> User-friendly conflict resolution interface</li>
+                <li><strong>Storage Errors:</strong> Graceful degradation with error reporting</li>
+                <li><strong>Camera Errors:</strong> Fallback to manual barcode entry</li>
+                <li><strong>Printer Errors:</strong> Alternative sharing options when printing fails</li>
+            </ul>
+            
+            <h3>Offline-First Considerations</h3>
+            <ul class="feature-list">
+                <li><strong>Data Persistence:</strong> IndexedDB with encryption for sensitive data</li>
+                <li><strong>Image Handling:</strong> Compressed thumbnails, lazy loading</li>
+                <li><strong>Sync Queue:</strong> Visual queue management with retry logic</li>
+                <li><strong>Conflict Resolution:</strong> Timestamp-based with user override options</li>
+                <li><strong>Storage Optimization:</strong> Auto-cleanup of old transactions and images</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🌍 Multi-Language Support</h2>
+            
+            <h3>Language Implementation</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <div style="background: #c6f6d5; padding: 15px; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0;">🇬🇧 English</h4>
+                    <ul style="margin: 0; font-size: 12px;">
+                        <li>Default language</li>
+                        <li>Full feature set</li>
+                        <li>Technical terms</li>
+                    </ul>
+                </div>
+                <div style="background: #fef5e7; padding: 15px; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0;">🇿🇦 Afrikaans</h4>
+                    <ul style="margin: 0; font-size: 12px;">
+                        <li>Receipt templates</li>
+                        <li>Button labels</li>
+                        <li>Error messages</li>
+                    </ul>
+                </div>
+                <div style="background: #e6fffa; padding: 15px; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0;">🇿🇦 isiZulu</h4>
+                    <ul style="margin: 0; font-size: 12px;">
+                        <li>Core UI elements</li>
+                        <li>Success messages</li>
+                        <li>Customer communication</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Localization Strategy</h3>
+            <ul class="feature-list">
+                <li><strong>Dynamic Loading:</strong> Language packs loaded on demand to reduce bundle size</li>
+                <li><strong>RTL Support:</strong> Future-ready for Arabic/Hebrew if needed</li>
+                <li><strong>Number Formatting:</strong> South African currency and date formats</li>
+                <li><strong>Cultural Adaptation:</strong> Local business customs and terminology</li>
+                <li><strong>Voice Commands:</strong> Future enhancement for low-literacy users</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Implementation Timeline</h2>
+            
+            <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px; border-radius: 12px; margin: 20px 0;">
+                <h3 style="color: white; margin: 0 0 15px 0;">4-Week Sprint Breakdown</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h4 style="margin: 0 0 10px 0;">Week 1: Foundation</h4>
+                        <ul style="margin: 0; font-size: 14px;">
+                            <li>Design system setup</li>
+                            <li>Component library</li>
+                            <li>Basic routing</li>
+                            <li>Offline infrastructure</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h4 style="margin: 0 0 10px 0;">Week 2: Core Features</h4>
+                        <ul style="margin: 0; font-size: 14px;">
+                            <li>Sales flow implementation</li>
+                            <li>Product management</li>
+                            <li>Local database setup</li>
+                            <li>Payment processing</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h4 style="margin: 0 0 10px 0;">Week 3: Integration</h4>
+                        <ul style="margin: 0; font-size: 14px;">
+                            <li>Receipt generation</li>
+                            <li>WhatsApp integration</li>
+                            <li>Sync implementation</li>
+                            <li>Multi-language support</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h4 style="margin: 0 0 10px 0;">Week 4: Polish & Deploy</h4>
+                        <ul style="margin: 0; font-size: 14px;">
+                            <li>Performance optimization</li>
+                            <li>Error handling</li>
+                            <li>Testing & QA</li>
+                            <li>Production deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✅ Design Validation Checklist</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <h3>🎯 User Experience</h3>
+                    <ul class="feature-list">
+                        <li>✅ <3 taps for core functions</li>
+                        <li>✅ Clear visual hierarchy</li>
+                        <li>✅ Consistent navigation patterns</li>
+                        <li>✅ Offline-first indicators</li>
+                        <li>✅ Error state recovery</li>
+                        <li>✅ Multi-language support</li>
+                        <li>✅ Accessibility compliance</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>📱 Technical Performance</h3>
+                    <ul class="feature-list">
+                        <li>✅ 44px+ touch targets</li>
+                        <li>✅ High contrast colors</li>
+                        <li>✅ Responsive breakpoints</li>
+                        <li>✅ Loading state designs</li>
+                        <li>✅ Progressive enhancement</li>
+                        <li>✅ Offline functionality</li>
+                        <li>✅ Performance budgets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #48bb78, #38a169); color: white; padding: 25px; border-radius: 12px; text-align: center; margin: 30px 0;">
+            <h2 style="color: white; margin: 0 0 15px 0;">🚀 Ready for Development!</h2>
+            <p style="margin: 0; font-size: 18px;">Complete wireframes, user flows, and technical specifications for a 4-week development sprint.</p>
+            <div style="margin-top: 15px; font-size: 14px; opacity: 0.9;">
+                Target: Production-ready mPOS system for South African informal traders
+            </div>
+        </div>
+    </div>
+</body>
+</html>
